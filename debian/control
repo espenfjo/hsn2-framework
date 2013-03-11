@@ -1,8 +1,8 @@
 Package: hsn2-framework
-Version: {VER}
+Version: 2.0.0-SNAPSHOT
 Section: unknown
 Priority: optional
 Architecture: all
 Maintainer: Juliusz Brzostek (juliusz.brzostek@cert.pl)
 Description: HSN2 Framework Component.
-Distribution: {DEBIAN_DIST}
+

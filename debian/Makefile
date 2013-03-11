@@ -1,11 +1,9 @@
 #
 # This Makefile is responsoble for build debian package.
 # 4 variables must be provided:
-#   HSN2_VER=2.X
-#   BUILD_NUMBER=999
-#   DEBIAN_DIST=(experimental|2.X)
-
-DEBIAN_DIST=experimental
+HSN2_VER=2.0.0-SNAPSHOT
+BUILD_NUMBER=1
+DEBIAN_DIST=sid
 HSN2_COMPONENT=framework
 
 all:	hsn2-framework
@@ -19,7 +17,8 @@ hsn2-framework: hsn2-framework-clean
 	mkdir -p $(PKG)/etc/init.d
 	mkdir -p $(PKG)/opt/hsn2/$(HSN2_COMPONENT)
 	mkdir -p $(PKG)/var/log/hsn2
-	tar -zxf ../hsn2-main/target/hsn2-main-*.tar.gz -C $(PKG)/opt/hsn2/$(HSN2_COMPONENT)
+	tar -zxf ../target/hsn2-framework-*.tar.gz -C $(PKG)/opt/hsn2/
+	mv  $(PKG)/opt/hsn2/$(HSN2_COMPONENT)/hsn2-main-$(HSN2_VER).jar $(PKG)/opt/hsn2/$(HSN2_COMPONENT)/hsn2-$(HSN2_COMPONENT).jar
 	cp hsn2-fwk.initd $(PKG)/etc/init.d/hsn2-$(HSN2_COMPONENT)
 	cp hsn2-fwk.postinst $(PKG)/DEBIAN/postinst
 #	cp hsn2-fwk.sh $(PKG)/opt/hsn2/$(HSN2_COMPONENT)/hsn2-$(HSN2_COMPONENT).sh
